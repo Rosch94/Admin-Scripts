@@ -1,0 +1,32 @@
+from openpyxl import load_workbook
+import time
+nein = "Nein"
+ja = "Ja"
+counter = 1
+
+path="c:/test2.xlsx"
+
+wb = load_workbook(path)
+ws=wb.active
+
+#b1=sheet['A3']
+#print(b1.value)
+
+#c3 = sheet.cell(row=10,column=1)
+
+
+#for row in sheet.iter_rows(min_row=3, max_col=1, max_row=5, values_only=True):
+  #print(row)
+
+
+for col in ws['A']:
+    webpage = col.value
+    counter = counter + 1
+    ws.cell(row=counter, column=2).value = nein
+    ws.cell(row=counter, column=3).value = ja
+    print (col.value)
+    print (counter)
+    
+wb.save("c:/test2.xlsx")
+#print(c3)
+
