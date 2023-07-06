@@ -14,12 +14,12 @@ for filename in os.listdir(directory):
         with open(os.path.join(directory, filename), 'r') as f:
             textlines = f.readlines()
             for line in textlines:
-                match_pattern = re.search("^(?=.*\SSI)(?=.*/owa/ev.owa2).*$", line)
+                match_pattern = re.search("^(?=.*\DEF)(?=.*/dir/ev.owa2).*$", line)
                 if match_pattern is not None:
                     match_date = re.search(r'\d{4}-\d{2}-\d{2}', str(match_pattern))
                     date = datetime.strptime(match_date.group(), '%Y-%m-%d').date()
 
-                    match_user = re.search(r"SSI\\\S+", line, re.IGNORECASE)
+                    match_user = re.search(r"DEF\\\S+", line, re.IGNORECASE)
                     if match_user is not None:
                         ws.cell(row=counter, column=1).value = str(date)
                         ws.cell(row=counter, column=2).value = str(match_user.group())
