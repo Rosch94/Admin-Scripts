@@ -1,5 +1,5 @@
 <# Set $ISODisplayName to the visible name of the application in the Windows Start menu #>
-#$ISODisplayName = "BabtecQ (Produktiv)"
+#$ISODisplayName = "AppName"
 
 <# Get uninstallable ClickOnce applications #>
 #$InstalledApplicationNotMSI = Get-ChildItem HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall | foreach-object {Get-ItemProperty $_.PsPath}
