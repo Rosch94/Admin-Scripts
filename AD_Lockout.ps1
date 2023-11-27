@@ -16,9 +16,9 @@ Logon Type	Title	Description
 
 
 # Creating filter criteria for events
-$filterHash = @{LogName = "Security"; Id = 4625; StartTime = (Get-Date).AddDays(-1)}
+$filterHash = @{LogName = "Security"; Id = 4625; StartTime = (Get-Date).AddDays(-10)}
 # Getting lockout events from the source computer
-$lockoutEvents = Get-WinEvent -ComputerName NE0048 -FilterHashTable $filterHash -MaxEvents 1 -ErrorAction 0
+$lockoutEvents = Get-WinEvent -ComputerName NE0048 -FilterHashTable $filterHash -MaxEvents 10 -ErrorAction 0
 # Building output based on advanced properties
 $lockoutEvents | Select @{Name = "LockedUserName"; Expression = {$_.Properties[5].Value}}, `
                         @{Name = "LogonType"; Expression = {$_.Properties[10].Value}}, `
